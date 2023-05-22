@@ -2,13 +2,13 @@
 #Звук работает только на proccesing 3. На более новой версии нужно удалить строчки кода:
 #add_library('sound')  (9 строчка)
 #a = SoundFile(this,"ll.mp3")    (32 строчка)
-#b = SoundFile(this,"up.mp3")    (33 строчка)
+#с = SoundFile(this,"up.mp3")    (33 строчка)
 #a.play()     (79 строчка)
-#b.play()      (95,99,110,114 строчка)
+#с.play()      (95,99,110,114 строчка)
 #Чтобы играть с звуком нужно зайти в Инструменты,Manage Tools,Libraries,найти Sound и установить!
 add_library('sound')
 a = 0
-b = 0
+с = 0
 clicks = 500000
 img = 0
 img2 = 0
@@ -27,17 +27,17 @@ r = 0
 g = 0
 b = 0
 def setup():
-    global a,img, b, clicks, img2, buy2, xDif2, yDif2, last_time,interval,cps,img3
+    global a,img, b, clicks, img2, buy2, xDif2, yDif2, last_time,interval,cps,img3,c
     size(600,400)
     a = SoundFile(this,"ll.mp3")
-    b = SoundFile(this,"up.mp3")
+    с = SoundFile(this,"up.mp3")
     img = loadImage("photo.png")
     img2 = loadImage("upgrade.png")
     img3 = loadImage("smile.png")
     last_time = second()
 def draw():
     background(255)
-    global a,img, b, clicks, img2, buy, buy2, xDif2, yDif2, last_time,interval,cps,r,g,b,img3
+    global a,img, b, clicks, img2, buy, buy2, xDif2, yDif2, last_time,interval,cps,r,g,img3,c
     if second() - last_time >= interval:
         if cps > 0:
             clicks+=cps
@@ -74,7 +74,7 @@ def draw():
     g = random(1,255)
     b = random(1,255)
 def mouseClicked():
-    global clicks,xDif,yDif,click,buy, buy2, xDif2, yDif2, last_time,interval,cps
+    global clicks,xDif,yDif,click,buy, buy2, xDif2, yDif2, last_time,interval,cps,c
     fill(0)
     a.play()
     xDif = 500 - mouseX
@@ -92,11 +92,11 @@ def mouseClicked():
                 if buy > 499:
                     buy += 400
                     click *= 2
-                    b.play()
+                    с.play()
                 else:
                     buy += 200
                     click *= 2
-                    b.play()
+                    с.play()
     if sqrt(xDif2*xDif2 + yDif2*yDif2) < 50:
         if buy2 < clicks:
             if buy2 > 3699:
@@ -107,8 +107,8 @@ def mouseClicked():
                 if buy2 > 499:
                     buy2 += 400
                     cps *= 2
-                    b.play()
+                    с.play()
                 else:
                     buy2 += 200
                     cps += 1
-                    b.play()
+                    с.play()
